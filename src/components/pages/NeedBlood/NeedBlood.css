@@ -1,0 +1,78 @@
+/* Set the margin and position of the page container */
+#page-container {
+    margin-top: 50px;
+    position: relative;
+    min-height: 84vh;
+  
+  }
+  
+  /* Set the padding of the container */
+  .container {
+    padding: 20px;
+  }
+  
+  /* Set the font, color, margin, and padding of the page heading */
+  h1 {
+    font-size: 3rem;
+    color: #e2091f;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* Set the font, color, and margin of the font italic elements */
+  .font-italic {
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Set the margin of the form rows */
+  .row {
+    margin-bottom: 2rem;
+  }
+  
+  /* Set the margin and font size of the BloodGroupSelect component */
+  .BloodGroupSelect {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Set the font, color, and padding of the form control elements */
+  .form-control {
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #333;
+    border: 1px solid #e2091f;
+    border-radius: 4px;
+  }
+  
+  /* Set the margin of the form submit button */
+  input[name="search"] {
+    margin-top: 1.5rem;
+  }
+  
+  /* Set the background color, font, and border of the form submit button */
+  .btn-primary {
+    background-color: #e2091f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Set the background color of the form submit button on hover */
+  .btn-primary:hover {
+    background-color: #721c1c;
+  }
+  
+  /* Set the font, color, and margin of the alert message */
+  .alert-danger {
+    font-size: 1.2rem;
+    color: #721c1c;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }

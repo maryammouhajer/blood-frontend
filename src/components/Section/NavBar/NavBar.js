@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar} >
       <div className="nav-wrapper navbar ">
-         <a className="logo-brand logo" href="/">Blood Bank Management System</a>
+         <a className="logo-brand logo" href="/">Be the Lifeblood</a>
         <ul id="nav-mobile" className={styles.navbarRight}>
           <li className={styles.act}>
             

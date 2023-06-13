@@ -1,23 +1,44 @@
 import React from "react";
-import whatisdonated from "../../../image/whatisdonated.png"
+import whatisdonated from "../../../image/whatisdonated.png";
+
 const WhyDonateBlood = () => {
   const transfusionNeeds = [
-    "women with complications of pregnancy, such as ectopic pregnancies and haemorrhage before, during or after childbirth.",
-    "children with severe anaemia often resulting from malaria or malnutrition.",
-    "people with severe trauma following man-made and natural disasters.",
-    "many complex medical and surgical procedures and cancer patients.",
+    
   ];
 
+
+
+  
   return (
-    <div id="page-container" style={{ marginTop: "50px", position: "relative", minHeight: "84vh" }}>
-      <div className="container">
-        <div id="content-wrap" style={{ paddingBottom: "50px" }}>
+    <div
+      id="page-container"
+      style={{
+        marginTop: "0rem",
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        overflowX: "hidden", // Hide horizontal scrollbar
+      }}
+    >
+      <div className="container" style={{ width: "100%", maxWidth: "100%" }}>
+        <div id="content-wrap" style={{ marginBottom: "20px" }}>
           <div className="row">
             <div className="col-lg-6">
               <h1 className="mt-4 mb-3">Why Should I Donate Blood?</h1>
-              <p>
-                <span style={{ color: "rgb(0, 0, 0)", fontFamily: "Open Sans, Arial, sans-serif", fontSize: "14px", textAlign: "justify" }}>
-                  Blood is the most precious gift that anyone can give to another person — the gift of life. A decision to donate your blood can save a life, or even several if your blood is separated into its components — red cells, platelets, and plasma — which can be used individually for patients with specific conditions. Safe blood saves lives and improves health. Blood transfusion is needed for:
+              <p className="paragraph">
+                <span>
+                Donating blood is an important act of kindness and generosity that can have a positive impact on the lives of people in need. Here are some reasons why you may want to consider donating blood:
+
+Saves lives: Blood transfusions are a critical component of medical treatments for patients who require blood due to medical conditions, surgeries, injuries, or other emergencies. By donating blood, you can help save the lives of people in need.
+
+Shortage of blood supply: Blood banks and hospitals often face shortages of blood supply, especially during emergencies or disasters. By donating blood, you can help ensure that the blood supply is sufficient to meet the needs of patients.
+
+Easy and safe: Donating blood is a simple and safe process that involves a health checkup and a needle prick. The entire process takes less than an hour, and the needle prick is usually painless.
+
+Free health checkup: Before donating blood, you will receive a health checkup that includes screening for various health conditions, such as anemia, high blood pressure, and infectious diseases. This can help you identify any health issues early on and receive treatment if necessary.
+
+Helps the community: Donating blood is a way to give back to your community and make a positive impact on the lives of people in need. It's a selfless act of kindness that can help save lives and improve the health and wellbeing of others.
                 </span>
               </p>
               <ul>
@@ -25,13 +46,9 @@ const WhyDonateBlood = () => {
                   <li key={index}>{need}</li>
                 ))}
               </ul>
-              <br />
-              <span style={{ color: "rgb(0, 0, 0)", fontFamily: "Open Sans, Arial, sans-serif", fontSize: "14px", textAlign: "justify" }}>
-                It is also needed for regular transfusions for people with conditions such as thalassaemia and sickle cell disease and is used to make products such as clotting factors for people with haemophilia. There is a constant need for regular blood supply because blood can be stored for only a limited time before use. Regular blood donations by a sufficient number of healthy people are needed to ensure that safe blood will be available whenever and wherever it is needed.
-              </span>
             </div>
             <div className="col-lg-6">
-              <img className="img-fluid rounded" src={{whatisdonated}} style={{ height: "600px", width: "500px" }} alt="error" />
+              <img className="img-fluid rounded" src={whatisdonated} alt="error" />
             </div>
           </div>
         </div>
@@ -39,5 +56,6 @@ const WhyDonateBlood = () => {
     </div>
   );
 };
+
 
 export default WhyDonateBlood;

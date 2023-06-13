@@ -24,63 +24,53 @@ const NeedBlood = () => {
   };
 
   return (
-    <div id="page-container" style={{ marginTop: "50px", position: "relative", minHeight: "84vh" }}>
+    <div className="container-fluid bg-light py-5">
       <div className="container">
-        <div id="content-wrap" style={{ paddingBottom: "50px" }}>
-          <div className="row">
-            <div className="col-lg-6">
-              <h1 className="mt-4 mb-3">Need Blood</h1>
-            </div>
-          </div>
-          <form name="needblood" onSubmit={handleSubmit}>
-            <div className="row">
-              <div className="col-lg-4 mb-4">
-                <div className="font-italic">
-                  Blood Group<span style={{ color: "red" }}>*</span>
-                </div>
+        <div className="row">
+          <div className="col-md-6">
+            <h1 className="mb-4">Request Blood</h1>
+            <p className="lead mb-4">
+              Fill out the form below to request blood from our donors.
+            </p>
+            <form name="needblood" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="bloodGroup" className="font-weight-bold">
+                  Blood Group<span className="text-danger">*</span>
+                </label>
                 <BloodGroupSelect
+                  id="bloodGroup"
                   value={bloodGroup}
                   onChange={handleBloodGroupChange}
+                  className="form-control"
                 />
               </div>
-              <div className="col-lg-4 mb-4">
-                <div className="font-italic">
+              <div className="form-group">
+                <label htmlFor="reason" className="font-weight-bold">
                   Reason, why do you need blood?
-                  <span style={{ color: "red" }}>*</span>
-                </div>
+                  <span className="text-danger">*</span>
+                </label>
                 <textarea
+                  id="reason"
                   className="form-control"
-                  name="address"
+                  name="reason"
                   value={reason}
                   onChange={handleReasonChange}
                   required
                 ></textarea>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-4 mb-4">
-                <div>
-                  <input
-                    type="submit"
-                    name="search"
-                    className="btn btn-primary"
-                    value="Search"
-                    style={{ cursor: "pointer" }}
-                  />
-                </div>
-              </div>
-            </div>
-          </form>
-          <div className="row">
+              <button type="submit" className="btn btn-primary">
+                Search
+              </button>
+            </form>
+          </div>
+          <div className="col-md-6">
             {donors.length > 0 ? (
               donors.map((donor, index) => (
                 <DonorCards key={index} {...donor} />
               ))
             ) : (
-              <div className="col-lg-12">
-                <div className="alert alert-danger">
-                  No Donor Found For your search Blood group
-                </div>
+              <div className="alert alert-danger mt-4">
+                No donors found for your blood group and reason.
               </div>
             )}
           </div>

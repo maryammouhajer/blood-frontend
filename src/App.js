@@ -12,7 +12,7 @@ import NeedBlood from "./components/pages/NeedBlood/NeedBlood";
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="AboutUs" element={<AboutUs />}></Route>

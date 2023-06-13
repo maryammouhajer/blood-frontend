@@ -1,11 +1,21 @@
 .footer-container {
-  background-color: #000000;
+  background-color: #e2091f;
   color: white;
   text-align: center;
   padding: 20px;
+  
+  /* Add media query for smaller screens */
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 }
 
 .footer-content {
   font-size: 14px;
   line-height: 1.5;
+  
+  /* Add media query for smaller screens */
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 }

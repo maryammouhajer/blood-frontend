@@ -1,15 +1,27 @@
-.donate-blood-container {
+/*
+
+.container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30rcap;
+  width: 100%!important;
+  box-sizing: border-box!important;
+  padding-top:0;
+  
+ 
+ 
 }
 
-.donate-blood-form {
+h2 {
+  margin-bottom: 20px;
+}
+
+form {
   display: flex;
   flex-direction: column;
 }
 
-.form-group {
+div {
   margin-bottom: 20px;
 }
 
@@ -17,7 +29,10 @@ label {
   font-weight: bold;
 }
 
-.form-control {
+input[type="text"],
+input[type="email"],
+textarea,
+select {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -25,20 +40,26 @@ label {
   border-radius: 4px;
 }
 
-.btn-primary {
-  background-color: #007bff;
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #e2091f;
   color: #fff;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  width: 50%;
+  margin: auto;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+button[type="submit"]:hover {
+  background-color: #b62828;
 }
 
-.btn-primary:disabled {
+button[type="submit"]:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }

@@ -30,78 +30,89 @@ const ContactUs = () => {
   };
 
   return (
-   
-        <div className="container">
-          <div id="content-wrap" style={{ paddingBottom: "50px" }}>
-            <h1 className="mt-4 mb-3">Contact</h1>
-            <div className="row">
-              <div className="col-lg-8 mb-4">
-                <h3>Send us a Message</h3>
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="form-group">
-                    <label htmlFor="fullName">Full Name:</label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input
-                      type="text"
-                      id="phoneNumber"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="message">Message:</label>
-                    <textarea
-                      id="message"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      required
-                    ></textarea>
-                  </div>
-                  <button type="submit" className="submit-btn">
-                    Send
-                  </button>
-                </form>
+    <div className="container-fluid bg-light py-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <h1 className="mb-4">Contact Us</h1>
+            <p className="lead mb-4">
+              Fill out the form below to send us a message.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="fullName" className="font-weight-bold">
+                  Full Name<span className="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="form-control"
+                  required
+                />
               </div>
-              <div className="col-lg-4 mb-4">
-                <h2>Contact Details</h2>
-                <div className="contact-details">
-                  <div>
-                    <strong>Address:</strong> {contactDetails.address}
-                  </div>
-                  <div>
-                    <strong>Contact Number:</strong>{" "}
-                    {contactDetails.contactNumber}
-                  </div>
-                  <div>
-                    <strong>Email:</strong> {contactDetails.email}
-                  </div>
-                </div>
+              <div className="form-group">
+                <label htmlFor="phoneNumber" className="font-weight-bold">
+                  Phone Number<span className="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email" className="font-weight-bold">
+                  Email<span className="text-danger">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message" className="font-weight-bold">
+                  Message<span className="text-danger">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="form-control"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+          <div className="col-md-6">
+            <h2>Contact Details</h2>
+            <div className="contact-details">
+              <div>
+                <strong>Address:</strong> {contactDetails.address}
+              </div>
+              <div>
+                <strong>Contact Number:</strong>{" "}
+                {contactDetails.contactNumber}
+              </div>
+              <div>
+                <strong>Email:</strong> {contactDetails.email}
               </div>
             </div>
           </div>
         </div>
-      
-    
+      </div>
+    </div>
   );
 };
 
