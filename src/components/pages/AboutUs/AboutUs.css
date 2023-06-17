@@ -1,5 +1,4 @@
 
-
 .about-container {
   display: flex;
   flex-direction: row;
@@ -58,6 +57,7 @@
 
 .about-text {
   font-size: 18px;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.5;
   color: #424242;
   margin-top: 20px;

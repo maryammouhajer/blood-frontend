@@ -14,15 +14,12 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .navbar a {
   text-decoration: none;
   color: white;
   font-size: 18px;
   font-weight: bolder;
   text-transform: capitalize;
-  
 }
 
 .navbar ul {
@@ -46,7 +43,8 @@
   padding: 10px;
 }
 
-.navbar li a:hover {
+.navbar li a:hover,
+.active {
   color: #e2091f;
   background-color: white;
 }
@@ -55,4 +53,37 @@
   color: #e2091f;
   background-color: white;
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    margin-top: 20px;
+    display: none;
+  }
+
+
+  .navbar li {
+    margin: 10px 0;
+  }
+
+  .navbar li a {
+    padding: 5px;
+  }
+
+  .navbar .menu-icon {
+    display: block;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+  }
+
+  .navbar .active {
+    display: block;
+  }
 }

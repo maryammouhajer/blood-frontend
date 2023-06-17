@@ -2,12 +2,13 @@ import React from "react";
 import bloodDonationCover from "../../../image/blood_donationcover.jpeg";
 import bloodFactsImage from "../../../image/Blood-facts_10-illustration-graphics__canteen.png";
 import save from "../../../image/save.png"
+import blood_drop_logo from "../../../image/blood_drop_logo.jpg"
 import "./Home.css";
 
 
 const Home = () => {
   const carouselImagesData = [
-    { src: save, alt:"logo" },
+    { src: save, alt: "logo" },
     { src: bloodFactsImage, alt: "Blood Facts Image" }
   ];
 
@@ -32,8 +33,15 @@ const Home = () => {
       content: "A person's blood group is determined by the genes inherited from their parents. Blood groups can be A positive or A negative, B positive or B negative, O positive or O negative, or AB positive or AB negative. A healthy diet helps ensure a successful blood donation and makes you feel better.",
       imageSrc: bloodDonationCover,
       altText: "Blood Donation Cover"
-    },
-    
+    }
+  ];
+
+  const bloodDrop = [
+    {
+      heading: "Blood Donor names",
+      imageSrc: blood_drop_logo,
+      altText: "Blood_drop_logo"
+    }
   ];
 
   const universalDonorsData = [
@@ -46,43 +54,61 @@ const Home = () => {
   ];
 
   return (
-    <div className="container-fluid position-relative">
-     <div className="row no-lines position-absolute" style={{ top: "0", paddingBottom: "0px" }}>
-  <div className="col"></div>
-</div>
-
-      <div className="row mt-4 align-items-center">
-      <div className="col">
-  <div id="demo" className="carousel slide" data-ride="carousel">
-    <ul className="carousel-indicators">
-      {carouselImagesData.map((image, index) => (
-        <li key={index} data-target="#demo" data-slide-to={index} className={index === 0 ? "active" : ""}></li>
-      ))}
-    </ul>
-    <div className="carousel-inner">
-      {carouselImagesData.map((image, index) => (
-        <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
-          <img src={image.src} alt={image.alt} className="d-block w-100" />
+    <div className="container">
+      <div className="container-fluid position-relative ">
+        <div className="row no-lines position-absolute" style={{ top: "0", paddingBottom: "0px" }}>
+          <div className="col"></div>
         </div>
-      ))}
-    </div>
-    <a className="carousel-control-prev" href="#demo" data-slide="prev">
-      <span className="carousel-control-prev-icon"></span>
-    </a>
-    <a className="carousel-control-next" href="#demo" data-slide="next">
-      <span className="carousel-control-next-icon"></span>
-    </a>
-  </div>
-</div>
-      </div>
 
-      <div className="row mt-4">
-        {cardData.map((card, index) => (
-          <div className="col-lg-4 mb-4" key={index}>
+        <div className="row mt-4 align-items-center">
+          <div className="col">
+            <div id="demo" className="carousel slide" data-ride="carousel">
+              <ul className="carousel-indicators">
+                {carouselImagesData.map((image, index) => (
+                  <li key={index} data-target="#demo" data-slide-to={index} className={index === 0 ? "active" : ""}></li>
+                ))}
+              </ul>
+              <div className="carousel-inner">
+                {carouselImagesData.map((image, index) => (
+                  <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+                    <img src={image.src} alt={image.alt} className="d-block w-100" />
+                  </div>
+                ))}
+              </div>
+              <a className="carousel-control-prev" href="#demo" data-slide="prev">
+                <span className="carousel-control-prev-icon"></span>
+              </a>
+              <a className="carousel-control-next" href="#demo" data-slide="next">
+                <span className="carousel-control-next-icon"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="row mt-4">
+          {cardData.map((card, index) => (
+            <div className="col-lg-4 mb-4" key={index}>
+              <div className="card">
+                <h4 className="card-header bg-info text-white">{card.header}</h4>
+                <div className="card-body" style={{ maxHeight: "150px", overflowY: "scroll" }}>
+                  <div style={{ paddingRight: "17px" }}>
+                    <p className="card-text">{card.content}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {bloodDrop.map((group, index) => (
+          <div className="" key={index}>
             <div className="card">
-              <h4 className="card-header bg-info text-white">{card.header}</h4>
-              <div className="card-body">
-                <p className="card-text">{card.content}</p>
+              <div className="d-flex flex-column justify-content-center text-center">
+                <img src={group.imageSrc} alt={group.altText} className="card-img-top" style={{ maxWidth: "200px" }} />
+                <div className="card-text">{group.content}</div>
+              </div>
+              <div className="card-text">
+
               </div>
             </div>
           </div>
@@ -91,14 +117,21 @@ const Home = () => {
 
       <div className="row mt-4">
         {bloodGroupData.map((group, index) => (
-          <div className="col-md-6 mb-4" key={index}>
-            <div className="card">
-              <img src={group.imageSrc} alt={group.altText} className={`card-img-top ${index === 1 ? 'group-image' : ''}`} />
-              <div className="card-body">
+          <div className="" key={index}>
+
+            <div className="row">
+
+
+              <div className="card-body col-md-6 mb-4 pl-5">
                 <h4 className="card-title">{group.heading}</h4>
                 <p className="card-text">{group.content}</p>
               </div>
+              <div className="card-body col-md-6 mb-4">
+                <img src={group.imageSrc} alt={group.altText} className={`card-img-top ${index === 1 ? 'group-image' : ''}`} />
+
+              </div>
             </div>
+
           </div>
         ))}
       </div>
@@ -106,14 +139,14 @@ const Home = () => {
       <div className="row mt-4">
         {universalDonorsData.map((donor, index) => (
           <div className="col" key={index}>
-            <div className="card bg-light">
-              <div className="card-body">
-                <h4 className="card-title">{donor.heading}</h4>
-                <p className="card-text">{donor.content}</p>
-                <a href={donor.buttonLink} className="btn btn-danger">{donor.buttonLabel}</a>
-              </div>
+
+            <div className="card-body">
+              <h4 className="card-title">{donor.heading}</h4>
+              <p className="card-text">{donor.content}</p>
+              <a href={donor.buttonLink} className="btn btn-danger">{donor.buttonLabel}</a>
             </div>
           </div>
+
         ))}
       </div>
     </div>

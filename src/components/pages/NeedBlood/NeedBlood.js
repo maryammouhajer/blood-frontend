@@ -6,6 +6,7 @@ const NeedBlood = () => {
   const [bloodGroup, setBloodGroup] = useState("");
   const [reason, setReason] = useState("");
   const [donors, setDonors] = useState([]);
+  const [location, setLocation] = useState("");
 
   const handleBloodGroupChange = (event) => {
     setBloodGroup(event.target.value);
@@ -14,17 +15,25 @@ const NeedBlood = () => {
   const handleReasonChange = (event) => {
     setReason(event.target.value);
   };
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const mockDonors = [
-      // Mock donor data
+
     ];
-    setDonors(mockDonors);
+
+    const filteredDonors = mockDonors.filter(
+      (donor) => donor.location === location
+    );
+
+    setDonors(filteredDonors);
   };
 
   return (
-    <div className="container-fluid bg-light py-5">
+    <div className="container-fluid  py-5">
       <div className="container">
         <div className="row">
           <div className="col-md-6">
@@ -58,6 +67,18 @@ const NeedBlood = () => {
                   required
                 ></textarea>
               </div>
+              <div className="form-group">
+                <label htmlFor="location" className="font-weight-bold">
+                  Your Location
+                </label>
+                <input
+                  id="location"
+                  className="form-control"
+                  name="location"
+                  value={location}
+                  onChange={handleLocationChange}
+                />
+              </div>
               <button type="submit" className="btn btn-primary">
                 Search
               </button>
@@ -66,11 +87,11 @@ const NeedBlood = () => {
           <div className="col-md-6">
             {donors.length > 0 ? (
               donors.map((donor, index) => (
-                <DonorCards key={index} {...donor} />
+                <DonorCards key={index} {...donor} location={location} />
               ))
             ) : (
               <div className="alert alert-danger mt-4">
-                No donors found for your blood group and reason.
+                No donors found for your blood group, reason, and location.
               </div>
             )}
           </div>

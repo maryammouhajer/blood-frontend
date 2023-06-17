@@ -1,54 +1,49 @@
 import React from "react";
 import whatisdonated from "../../../image/whatisdonated.png";
-
+import './WhyDonateBlood.css';
 const WhyDonateBlood = () => {
   const transfusionNeeds = [
-    
+
   ];
-
-
-
-  
   return (
-    <div
-      id="page-container"
-      style={{
-        marginTop: "0rem",
-        position: "relative",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        overflowX: "hidden", // Hide horizontal scrollbar
-      }}
-    >
-      <div className="container" style={{ width: "100%", maxWidth: "100%" }}>
-        <div id="content-wrap" style={{ marginBottom: "20px" }}>
-          <div className="row">
-            <div className="col-lg-6">
-              <h1 className="mt-4 mb-3">Why Should I Donate Blood?</h1>
-              <p className="paragraph">
-                <span>
-                Donating blood is an important act of kindness and generosity that can have a positive impact on the lives of people in need. Here are some reasons why you may want to consider donating blood:
+    <div className="container">
+      <div
+        id="page-container"
+        style={{
+          marginTop: "0rem",
+          position: "relative",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          overflowX: "hidden", // Hide horizontal scrollbar
+        }}
+      >
+        <div className="container" style={{ width: "100%", maxWidth: "100%" }}>
+          <div id="content-wrap" style={{ marginBottom: "20px" }}>
+            <div className="row">
+              <div className="col-lg-6">
+                <h1 className="mt-4 mb-3">Why Should I Donate Blood?</h1>
+                <p className="paragraph">
 
-Saves lives: Blood transfusions are a critical component of medical treatments for patients who require blood due to medical conditions, surgeries, injuries, or other emergencies. By donating blood, you can help save the lives of people in need.
+                  Donating blood is an incredibly powerful way to save lives and make a positive impact in your community. Blood transfusions are needed for a wide variety of medical procedures, including surgeries, cancer treatments, and emergency care. </p>
+                <p className="paragraph">
+                  By donating blood, you can help ensure that there is a steady and reliable supply of blood and blood products for those in need. Every donation has the potential to save up to three lives, and it only takes a small amount of your time to make a big difference.
+                </p>
+                <p className="paragraph">
+                  And here's another example:
 
-Shortage of blood supply: Blood banks and hospitals often face shortages of blood supply, especially during emergencies or disasters. By donating blood, you can help ensure that the blood supply is sufficient to meet the needs of patients.
+                  In addition to the lifesaving benefits of donating blood, there are also health benefits for the donor. Regular blood donation can help reduce the risk of heart disease, stroke, and other health issues. It can also help your body replenish its blood supply, stimulate the production of new blood cells, and improve blood flow. By donating blood, you can not only help others in need, but also improve your own health and well-being.
+                </p>
 
-Easy and safe: Donating blood is a simple and safe process that involves a health checkup and a needle prick. The entire process takes less than an hour, and the needle prick is usually painless.
-
-Free health checkup: Before donating blood, you will receive a health checkup that includes screening for various health conditions, such as anemia, high blood pressure, and infectious diseases. This can help you identify any health issues early on and receive treatment if necessary.
-
-Helps the community: Donating blood is a way to give back to your community and make a positive impact on the lives of people in need. It's a selfless act of kindness that can help save lives and improve the health and wellbeing of others.
-                </span>
-              </p>
-              <ul>
-                {transfusionNeeds.map((need, index) => (
-                  <li key={index}>{need}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="col-lg-6">
-              <img className="img-fluid rounded" src={whatisdonated} alt="error" />
+                <ul>
+                  {transfusionNeeds.map((need, index) => (
+                    <li key={index}>{need}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="col-lg-6">
+                <img className="img-fluid rounded" src={whatisdonated} alt="error" />
+              </div>
             </div>
           </div>
         </div>
