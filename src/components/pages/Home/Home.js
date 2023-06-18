@@ -4,6 +4,7 @@ import bloodFactsImage from "../../../image/Blood-facts_10-illustration-graphics
 import save from "../../../image/save.png"
 import blood_drop_logo from "../../../image/blood_drop_logo.jpg"
 import "./Home.css";
+import DonorCards from "../../DonorCards";
 
 
 const Home = () => {
@@ -135,6 +136,9 @@ const Home = () => {
 
           </div>
         ))}
+      </div>
+      <div>
+        <DonorCards/>
       </div>
       <div className="row mt-4">
         {universalDonorsData.map((donor, index) => (

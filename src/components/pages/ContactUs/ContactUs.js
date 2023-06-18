@@ -1,26 +1,82 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
+import axios from "axios";
+//import { useNavigate } from "react-router-dom";
 
 const ContactUs = () => {
-  const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  // const [contactname, setcontactname] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Handle form submission logic here
+  //   // You can send the form data to a backend API or perform any desired action
+  //   console.log("Full Name:", contactname);
+  //   console.log("Phone Number:", phoneNumber);
+  //   console.log("Email:", email);
+  //   console.log("Message:", message);
+
+  //   // Clear form fields
+  //   setcontactname("");
+  //   setPhoneNumber("");
+  //   setEmail("");
+  //   setMessage("");
+  // };
+
+  // const navigate = useNavigate();
+  const [formvalue, setFormvalue] = useState({
+    contactname: "",
+    contactemail: "",
+    contactnumber: "",
+
+    message: "",
+  });
+  // const [Msg, setMsg] = useState("");
+  const handleInput = (e) => {
+    setFormvalue({ ...formvalue, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    // You can send the form data to a backend API or perform any desired action
-    console.log("Full Name:", fullName);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Email:", email);
-    console.log("Message:", message);
+    //console.log(formvalue);
+    const formData = {
+      contactname: formvalue.contactname,
+
+      contactemail: formvalue.contactemail,
+      contactnumber: formvalue.contactnumber,
+      contactmessage: formvalue.contactmessage,
+    };
+    axios
+      .post("http://localhost/blood_back/api/contact_query.php", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.status === 200) {
+          // Handle successful form submission
+          console.log("Form submitted successfully!");
+        } else {
+          // Handle error response from the server
+          console.log("An error occurred while submitting the form.");
+        }
+      })
+      .catch((error) => {
+        // Handle network or other errors
+        console.error("An error occurred:", error);
+      });
 
     // Clear form fields
-    setFullName("");
-    setPhoneNumber("");
-    setEmail("");
-    setMessage("");
+    setFormvalue({
+      contactname: "",
+      contactemail: "",
+      contactnumber: "",
+
+      contactmessage: "",
+    });
   };
 
   const contactDetails = {
@@ -38,61 +94,65 @@ const ContactUs = () => {
             <p className="lead mb-4">
               Fill out the form below to send us a message.
             </p>
+
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="fullName" className="font-weight-bold">
-                  Full Name<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="form-control"
-                  required
-                />
+              <div className="mb-3 row">
+                <label className="col-sm-2">Fullname</label>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    name="contactname"
+                    value={formvalue.contactname}
+                    className="form-control"
+                    onChange={handleInput}
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="phoneNumber" className="font-weight-bold">
-                  Phone Number<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="form-control"
-                  required
-                />
+              <div className="mb-3 row">
+                <label className="col-sm-2">Email</label>
+                <div className="col-sm-10">
+                  <input
+                    type="email"
+                    name="contactemail"
+                    value={formvalue.contactemail}
+                    className="form-control"
+                    onChange={handleInput}
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="email" className="font-weight-bold">
-                  Email<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="form-control"
-                  required
-                />
+              <div className="mb-3 row">
+                <label className="col-sm-2">phoneNumber</label>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    name="contactnumber"
+                    value={formvalue.contactnumber}
+                    className="form-control"
+                    onChange={handleInput}
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="message" className="font-weight-bold">
-                  Message<span className="text-danger">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="form-control"
-                  required
-                ></textarea>
+
+              <div className="mb-3 row">
+                <label className="col-sm-2">message</label>
+                <div className="col-sm-10">
+                  <textarea
+                    name="contactmessage"
+                    value={formvalue.contactmessage}
+                    onChange={handleInput}
+                    required
+                  ></textarea>
+                </div>
               </div>
-              <button type="submit" className="btn btn-primary">
-                Send Message
-              </button>
+
+              <div className="mb-3 row">
+                <label className="col-sm-2"></label>
+                <div className="col-sm-10">
+                  <button name="submit" className="btn btn-success">
+                    Submit
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
           <div className="col-md-6">
@@ -102,8 +162,7 @@ const ContactUs = () => {
                 <strong>Address:</strong> {contactDetails.address}
               </div>
               <div>
-                <strong>Contact Number:</strong>{" "}
-                {contactDetails.contactNumber}
+                <strong>Contact Number:</strong> {contactDetails.contactNumber}
               </div>
               <div>
                 <strong>Email:</strong> {contactDetails.email}

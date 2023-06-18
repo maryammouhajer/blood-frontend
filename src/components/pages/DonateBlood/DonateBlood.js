@@ -57,7 +57,7 @@ const DonateBlood = () => {
       console.log(donor); // Log donor object for testing purposes
 
       axios
-        .post("http://localhost/blood_back/api/savedata.php", donor, {
+        .post("http://localhost/blood_back/api/donor.php", donor, {
           headers: {
             "Content-Type": "application/json",
           },
