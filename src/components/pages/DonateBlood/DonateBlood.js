@@ -1,61 +1,97 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
 const DonateBlood = () => {
   const [donor, setDonor] = useState({
-    donor_name: '',
-    donor_number: '',
-    donor_email: '',
-    dateBirth_donor: '',
-    donor_gender: '',
-    blood_group: '',
-    donor_address: '',
-    diseases: '',
-    availability_date: '',
-    availability_time: '',
-    last_time_donor: '',
+    donor_name: "",
+    donor_number: "",
+    donor_email: "",
+    dateBirth_donor: "",
+    donor_gender: "",
+    blood_group: "",
+    donor_address: "",
+    diseases: "",
+    availability_date: "",
+    availability_time: "",
+    last_time_donor: "",
   });
 
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate form inputs
     const errors = {};
     if (!donor.donor_name) {
-      errors.donor_name = 'Please enter your name';
+      errors.donor_name = "Please enter your name";
     }
     if (!donor.donor_number) {
-      errors.donor_number = 'Please enter your phone number';
+      errors.donor_number = "Please enter your phone number";
     }
     if (!donor.donor_email) {
-      errors.donor_email = 'Please enter your email';
+      errors.donor_email = "Please enter your email";
     }
     if (!donor.dateBirth_donor) {
-      errors.dateBirth_donor = 'Please enter your date of birth';
+      errors.dateBirth_donor = "Please enter your date of birth";
     }
     if (!donor.donor_gender) {
-      errors.donor_gender = 'Please select your gender';
+      errors.donor_gender = "Please select your gender";
     }
     if (!donor.blood_group) {
-      errors.blood_group = 'Please select your blood group';
+      errors.blood_group = "Please select your blood group";
     }
     if (!donor.donor_address) {
-      errors.donor_address = 'Please enter your address';
+      errors.donor_address = "Please enter your address";
     }
     if (!donor.availability_date) {
-      errors.availability_date = 'Please select your availability date';
+      errors.availability_date = "Please select your availability date";
     }
     if (!donor.availability_time) {
-      errors.availability_time = 'Please select your availability time';
+      errors.availability_time = "Please select your availability time";
     }
     if (!donor.last_time_donor) {
-      errors.last_time_donor = 'Please select when you last donated blood';
+      errors.last_time_donor = "Please select when you last donated blood";
     }
     if (Object.keys(errors).length === 0) {
       // Submit form
-      console.log(donor);
+      console.log(donor); // Log donor object for testing purposes
+
+      axios
+        .post("http://localhost/blood_back/api/savedata.php", donor, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            // Handle successful form submission
+            console.log("Form submitted successfully!");
+          } else {
+            // Handle error response from the server
+            console.log("An error occurred while submitting the form.");
+          }
+        })
+        .catch((error) => {
+          // Handle network or other errors
+          console.error("An error occurred:", error);
+        });
+      // Clear form fields
+      setDonor({
+        donor_name: "",
+        donor_number: "",
+        donor_email: "",
+        dateBirth_donor: "",
+        donor_gender: "",
+        blood_group: "",
+        donor_address: "",
+        diseases: "",
+        availability_date: "",
+        availability_time: "",
+        last_time_donor: "",
+      });
+      setErrors({}); // Clear the errors state after successful form submission
     } else {
-      // Display form errors
+      // Set the errors state with the validation errors
       setErrors(errors);
     }
   };
@@ -142,10 +178,10 @@ const DonateBlood = () => {
                 required
               >
                 <option value="">Select</option>
-                <option value=".">Male</option>
-                <option value=".">Female</option>
-                <option value=".">Other</option>
+                <option value="">Male</option>
+                <option value="female">Female</option>
               </select>
+
               {errors.donor_gender && (
                 <p className="text-danger">{errors.donor_gender}</p>
               )}
@@ -160,15 +196,15 @@ const DonateBlood = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select</option>
-                <option value=".">A+</option>
-                <option value=".">A-</option>
-                <option value=".">B+</option>
-                <option value=".">B-</option>
-                <option value=".">AB+</option>
-                <option value=".">AB-</option>
-                <option value=".">O+</option>
-                <option value=".">O-</option>
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
               </select>
               {errors.blood_group && (
                 <p className="text-danger">{errors.blood_group}</p>

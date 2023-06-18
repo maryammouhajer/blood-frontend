@@ -106,6 +106,7 @@ const Home = () => {
               <div className="d-flex flex-column justify-content-center text-center">
                 <img src={group.imageSrc} alt={group.altText} className="card-img-top" style={{ maxWidth: "200px" }} />
                 <div className="card-text">{group.content}</div>
+                
               </div>
               <div className="card-text">
 
@@ -135,7 +136,6 @@ const Home = () => {
           </div>
         ))}
       </div>
-
       <div className="row mt-4">
         {universalDonorsData.map((donor, index) => (
           <div className="col" key={index}>

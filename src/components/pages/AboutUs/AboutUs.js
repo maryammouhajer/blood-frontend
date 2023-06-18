@@ -1,43 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./AboutUs.css";
-import logo from "../../../image/logo.jpg"
-const AboutUs = () => {
+import logo from "../../../image/logo.jpg";
+
+function AboutUs() {
+  const [pageData, setPageData] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost/blood_back/api/about.php"
+      );
+      setPageData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   return (
-    <div className="container">
-      
-        <div className="row">
-
-          <div className="col-md-6">
-            <div className="about-content">
-              <h1 className="about-heading">About Us</h1>
-              <p className="about-text">
-                At our blood bank, we are committed to saving lives by providing a
-                safe and reliable supply of blood and blood products to hospitals
-                and medical centers. Our team of trained professionals works
-                tirelessly to ensure that every donation is used to its fullest
-                potential, and that patients in need receive the life-saving
-                transfusions they require.
-              </p>
-              <p className="about-text">
-                We understand that donating blood can be a daunting task, which is
-                why we make every effort to ensure that our donation process is
-                simple, quick, and painless. We welcome donors of all blood types
-                and backgrounds, and we are always looking for new volunteers to
-                help us in our mission to save lives.
-              </p>
-            </div>
-            <div className="col-md-6">
-
-            </div>
-          </div>
-          <div className="col-md-6 " >
-            <img className="img-fluid rounded" style={{ paddingTop:"40px" }} src={logo} alt="error" />
-
+    <div className="about-container col-12">
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="about-content">
+            <h1 className="about-heading">About Us</h1>
+            <p>
+              <span className="about-text">{pageData}</span>
+            </p>
           </div>
         </div>
+        <div className="col-lg-6 ">
+          <img
+            className="img-fluid rounded about-image"
+            src={logo}
+            alt="error"
+          />
+        </div>
       </div>
-    
+    </div>
   );
-};
+}
 
 export default AboutUs;
