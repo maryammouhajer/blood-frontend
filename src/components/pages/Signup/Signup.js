@@ -1,7 +1,7 @@
 import React from "react";
-import './Signup.css';
+import "./Signup.css";
 import { Link } from "react-router-dom";
-const Signup=() =>{
+const Signup = () => {
   return (
     <div>
       <form className="form" style={{ margin: "auto" }}>
@@ -51,12 +51,12 @@ const Signup=() =>{
         </button>
 
         <p className="signin">
-          Already have an account? <Link to="Login">Sign in</Link>
+          Already have an account? <Link to="/login">Sign in</Link>
         </p>
       </form>
     </div>
   );
-}
+};
 
 export default Signup;
 

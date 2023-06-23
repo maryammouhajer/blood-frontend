@@ -1,143 +1,82 @@
-// import React, { useState } from "react";
-// import DonorCards from "../../DonorCards";
-// import BloodGroupSelect from "../../BloodGroupSelect";
+import axios from "axios";
+import React, { useState } from "react";
+import "./NeedBlood.css";
+import blood_drop_logo from "../../../image/blood_drop_logo.jpg";
 
-// const NeedBlood = () => {
-//   const [bloodGroup, setBloodGroup] = useState("");
-//   const [reason, setReason] = useState("");
-//   const [donors, setDonors] = useState([]);
-//   const [location, setLocation] = useState("");
-
-//   const handleBloodGroupChange = (event) => {
-//     setBloodGroup(event.target.value);
-//   };
-
-//   const handleReasonChange = (event) => {
-//     setReason(event.target.value);
-//   };
-//   const handleLocationChange = (event) => {
-//     setLocation(event.target.value);
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const mockDonors = [
-
-//     ];
-
-//     const filteredDonors = mockDonors.filter(
-//       (donor) => donor.location === location
-//     );
-
-//     setDonors(filteredDonors);
-//   };
-
-//   return (
-//     <div className="container-fluid  py-5">
-//       <div className="container">
-//         <div className="row">
-//           <div className="col-md-6">
-//             <h1 className="mb-4">Request Blood</h1>
-//             <p className="lead mb-4">
-//               Fill out the form below to request blood from our donors.
-//             </p>
-//             <form name="needblood" onSubmit={handleSubmit}>
-//               <div className="form-group">
-//                 <label htmlFor="bloodGroup" className="font-weight-bold">
-//                   Blood Group<span className="text-danger">*</span>
-//                 </label>
-//                 <BloodGroupSelect
-//                   id="bloodGroup"
-//                   value={bloodGroup}
-//                   onChange={handleBloodGroupChange}
-//                   className="form-control"
-//                 />
-//               </div>
-//               <div className="form-group">
-//                 <label htmlFor="reason" className="font-weight-bold">
-//                   Reason, why do you need blood?
-//                   <span className="text-danger">*</span>
-//                 </label>
-//                 <textarea
-//                   id="reason"
-//                   className="form-control"
-//                   name="reason"
-//                   value={reason}
-//                   onChange={handleReasonChange}
-//                   required
-//                 ></textarea>
-//               </div>
-//               <div className="form-group">
-//                 <label htmlFor="location" className="font-weight-bold">
-//                   Your Location
-//                 </label>
-//                 <input
-//                   id="location"
-//                   className="form-control"
-//                   name="location"
-//                   value={location}
-//                   onChange={handleLocationChange}
-//                 />
-//               </div>
-//               <button type="submit" className="btn btn-primary">
-//                 Search
-//               </button>
-//             </form>
-//           </div>
-//           <div className="col-md-6">
-//             {donors.length > 0 ? (
-//               donors.map((donor, index) => (
-//                 <DonorCards key={index} {...donor} location={location} />
-//               ))
-//             ) : (
-//               <div className="alert alert-danger mt-4">
-//                 No donors found for your blood group, reason, and location.
-//               </div>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default NeedBlood;
-
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-const NeedBlood = () => {
+function NeedBlood() {
+  const [bloodGroup, setBloodGroup] = useState("");
   const [donors, setDonors] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [searched, setSearched] = useState(false); // New state to track if search button was clicked
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post('http://localhost/blood_back/api/needblood.php', {
-          blood: 'blood group', // Replace with the actual blood group value
+  const handleBloodGroupChange = (e) => {
+    setBloodGroup(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (bloodGroup) {
+      axios
+        .get("http://localhost/blood_back/api/search.php", {
+          params: { blood_group: bloodGroup },
+        })
+        .then((response) => {
+          setDonors(response.data);
+          setErrorMsg("");
+          setSearched(true); // Set searched to true when search is successful
+        })
+        .catch((error) => {
+          setDonors([]);
+          setErrorMsg(error.message);
+          setSearched(true); // Set searched to true even when search fails
         });
-        setDonors(response.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    } else {
+      setErrorMsg("Please select a blood group");
+      setSearched(false); // Reset searched state when no blood group is selected
+    }
+  };
 
-    fetchData();
-  }, []);
+  const handleRequestBlood = (donor) => {
+    const message = `I have a donor who wants to donate blood. Contact information: ${donor.donor_number}`;
+    // You can send the message using your preferred method, such as an API call or email service
+    console.log(message);
+  };
 
   return (
-    <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : donors.length > 0 ? (
-        <div className="row">
-          {donors.map((donor) => (
-            <div className="col-lg-4 col-sm-6 portfolio-item" key={donor.donor_id}>
-              <br />
-              <div className="card" style={{ width: '300px' }}>
-                <img className="card-img-top" src="image\blood_drop_logo.jpg" alt="Card image" style={{ width: '100%', height: '300px' }} />
+    <div className="container">
+      <h2>Search Blood Donors</h2>
+      <div className="search-container">
+        <select value={bloodGroup} onChange={handleBloodGroupChange} required>
+          <option value="" disabled>
+            Select Blood Group
+          </option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+        <button className="search-btn" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+
+      {errorMsg && <p className="error-msg">{errorMsg}</p>}
+
+      {searched && donors.length > 0 ? (
+        <div className="mt-100">
+          <h3>Donors with Blood Group {bloodGroup}</h3>
+          <div className="card-container">
+            {donors.map((donor, index) => (
+              <div key={index} className="card" style={{ width: "300px" }}>
+                <img
+                  className="card-img-top"
+                  src={blood_drop_logo}
+                  alt="Card image"
+                  style={{ width: "100%", height: "300px" }}
+                />
                 <div className="card-body">
                   <h3 className="card-title">{donor.donor_name}</h3>
                   <p className="card-text">
@@ -147,21 +86,29 @@ const NeedBlood = () => {
                     <br />
                     <b>Gender: </b> {donor.donor_gender}
                     <br />
-                    <b>Age: </b> {donor.donor_age}
+                    <b>date of Birth: </b> {donor.dateBirth_donor}
                     <br />
                     <b>Address: </b> {donor.donor_address}
                     <br />
                   </p>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => handleRequestBlood(donor)}
+                  >
+                    Request Blood
+                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      ) : (
-        <div className="alert alert-danger">No Donor Found for your search blood group</div>
-      )}
+      ) : searched ? (
+        <div className="alert alert-danger">
+          No Donor Found For your search Blood group {bloodGroup}
+        </div>
+      ) : null}
     </div>
   );
-};
+}
 
 export default NeedBlood;

@@ -1,17 +1,22 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const BloodGroupSelect = ({ value, onChange }) => {
-    const bloodGroups = [
-      { value: "", label: "Select" },
-      { value: "A+", label: "A+" },
-      { value: "A-", label: "A-" },
-      { value: "B+", label: "B+" },
-      { value: "B-", label: "B-" },
-      { value: "AB+", label: "AB+" },
-      { value: "AB-", label: "AB-" },
-      { value: "O+", label: "O+" },
-      { value: "O-", label: "O-" },
-    ];
+  const [bloodTypes, setBloodTypes] = useState([]);
+
+  useEffect(() => {
+    fetchBloodTypes();
+  }, []);
+
+  const fetchBloodTypes = async () => {
+    try {
+      const response = await axios.get('http://localhost/blood_back/api/bloodtype.php');
+      setBloodTypes(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   
     return (
       <select
@@ -21,11 +26,11 @@ const BloodGroupSelect = ({ value, onChange }) => {
         onChange={onChange}
         required
       >
-        {bloodGroups.map((group) => (
-          <option key={group.value} value={group.value}>
-            {group.label}
-          </option>
-        ))}
+        {bloodTypes.map((bloodType) => (
+            <option key={bloodType.id} value={bloodType.blood_group}>
+              {bloodType.blood_group}
+            </option>
+          ))}
       </select>
     );
   };

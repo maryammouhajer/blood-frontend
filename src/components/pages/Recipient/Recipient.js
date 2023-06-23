@@ -7,7 +7,7 @@ const Recipient = () => {
   const [contactNumber, setContactNumber] = useState("");
   const [recipientEmail, setRecipientEmail] = useState("");
   const [address, setAddress] = useState("");
- // const [recipientData, setRecipientData] = useState([]);
+  // const [recipientData, setRecipientData] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const Recipient = () => {
         // Handle the response if needed
         console.log(response.data);
         // Update the recipient data
-      //  setRecipientData((prevData) => [...prevData, formData]);
+        //  setRecipientData((prevData) => [...prevData, formData]);
       })
       .catch((error) => {
         // Handle the error if needed

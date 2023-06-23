@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AboutUs.css";
-import logo from "../../../image/logo.jpg";
+import about from "../../../image/about.jpg";
 
 function AboutUs() {
   const [pageData, setPageData] = useState("");
@@ -34,7 +34,7 @@ function AboutUs() {
         <div className="col-lg-6 ">
           <img
             className="img-fluid rounded about-image"
-            src={logo}
+            src={about}
             alt="error"
           />
         </div>

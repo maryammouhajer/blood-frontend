@@ -1,39 +1,16 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
 import axios from "axios";
-//import { useNavigate } from "react-router-dom";
 
 const ContactUs = () => {
-  // const [contactname, setcontactname] = useState("");
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [message, setMessage] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Handle form submission logic here
-  //   // You can send the form data to a backend API or perform any desired action
-  //   console.log("Full Name:", contactname);
-  //   console.log("Phone Number:", phoneNumber);
-  //   console.log("Email:", email);
-  //   console.log("Message:", message);
-
-  //   // Clear form fields
-  //   setcontactname("");
-  //   setPhoneNumber("");
-  //   setEmail("");
-  //   setMessage("");
-  // };
-
   // const navigate = useNavigate();
   const [formvalue, setFormvalue] = useState({
     contactname: "",
     contactemail: "",
     contactnumber: "",
-
     message: "",
   });
-  // const [Msg, setMsg] = useState("");
+
   const handleInput = (e) => {
     setFormvalue({ ...formvalue, [e.target.name]: e.target.value });
   };
@@ -74,7 +51,6 @@ const ContactUs = () => {
       contactname: "",
       contactemail: "",
       contactnumber: "",
-
       contactmessage: "",
     });
   };
@@ -89,15 +65,15 @@ const ContactUs = () => {
     <div className="container-fluid  py-5">
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
-            <h1 className="mb-4">Contact Us</h1>
+          <div className="col-lg-6">
+            <h1 className="mb-4 center">Contact Us</h1>
             <p className="lead mb-4">
               Fill out the form below to send us a message.
             </p>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-3 row">
-                <label className="col-sm-2">Fullname</label>
+                <label className="col-sm-2">Fullname </label>
                 <div className="col-sm-10">
                   <input
                     type="text"
@@ -155,7 +131,7 @@ const ContactUs = () => {
               </div>
             </form>
           </div>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <h2>Contact Details</h2>
             <div className="contact-details">
               <div>

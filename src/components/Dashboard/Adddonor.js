@@ -1,7 +1,29 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const DonateBlood = () => {
+const Adddonor = () => {
+  const navigate = useNavigate();
+  // const [formvalue, setFormvalue] = useState({ donorname:'', email:'', status:'' });
+  // const [message, setMessage] = useState('');
+  // const handleInput = (e) => {
+  //     setFormvalue({ ...formvalue, [e.target.name]: e.target.value });
+  // }
+
+  // const handleSubmit = async (e) => {
+  //     e.preventDefault();
+  //     //console.log(formvalue);
+  //     const formData = { donorname: formvalue.donorname, email: formvalue.email, status: formvalue.status };
+  //     const res = await axios.post("http://localhost/blood_back/api/donor.php", formData);
+  //     //let jsonres= res.data.json();
+  //     if (res.data.success) {
+  //         setMessage(res.data.success);
+  //         setTimeout(() => {
+  //             navigate('/donorlist');
+  //         }, 2000);
+
+  //     }
+  // }
   const [donor, setDonor] = useState({
     donor_name: "",
     donor_number: "",
@@ -65,6 +87,11 @@ const DonateBlood = () => {
           if (response.status === 200) {
             // Handle successful form submission
             console.log("Form submitted successfully!");
+            
+                        
+                        setTimeout(() => {
+                            navigate('admin/dashboard/DonorList');
+                        }, 2000);
           } else {
             // Handle error response from the server
             console.log("An error occurred while submitting the form.");
@@ -99,7 +126,6 @@ const DonateBlood = () => {
     const { name, value } = e.target;
     setDonor((prevDonor) => ({ ...prevDonor, [name]: value }));
   };
-
   return (
     <div className="container">
       <div className="row">
@@ -303,5 +329,4 @@ const DonateBlood = () => {
     </div>
   );
 };
-
-export default DonateBlood;
+export default Adddonor;

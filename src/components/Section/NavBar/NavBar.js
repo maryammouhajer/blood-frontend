@@ -4,40 +4,6 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <>
-      {/* <header class="continer-fluid ">
-        <div class="header-top">
-          <div class="container">
-            <div class="row col-det">
-              <div class="col-lg-6 d-none d-lg-block">
-                <ul class="ulleft">
-                  <li>
-                    <i class="far fa-envelope"></i>
-                    sales@smarteyeapps.com
-                    <span>|</span>
-                  </li>
-                  <li>
-                    <i class="far fa-clock"></i>
-                    Service Time : 12:AM
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6 col-md-12">
-                <ul class="ulright">
-                  <li>
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    Upload Video
-                    <span>|</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-user"></i>
-                    <Link to="Signup">Signup</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header> */}
       <div className="container-fluid">
         <div className="row">
           <nav className="navbar navbar-expand-lg ">
@@ -80,24 +46,14 @@ const NavBar = () => {
                     <Link to="ContactUs">Contact Us</Link>
                   </li>
                   <li className="float-right">
-                    <Link to="Signup">Signup</Link>
+                    <Link to="/signup">Signup</Link>
                   </li>
                   <li className="float-right">
-                    <Link to="Login">Login</Link>
+                    <Link to="/login">Login</Link>
                   </li>
                 </ul>
+
                 
-                {/* <form className="d-flex" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form> */}
               </div>
             </div>
           </nav>

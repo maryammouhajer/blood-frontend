@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import whatisdonated from "../../../image/whatisdonated.png";
+import './WhyDonateBlood.css'
 const WhyDonateBlood = () => {
   const [pageData, setPageData] = useState("");
 
@@ -22,7 +23,7 @@ const WhyDonateBlood = () => {
   return (
     <div className="col-12">
       <div className="container" style={{ width: "100%", maxWidth: "100%" }}>
-        <div id="content-wrap" style={{ marginBottom: "20px" }}>
+        <div id="content-wrap" style={{ marginBottom: "0px" }}>
           <div className="row">
             <div className="col-lg-6">
               <h1 className="text-heading">Why Should I Donate Blood?</h1>
@@ -32,7 +33,7 @@ const WhyDonateBlood = () => {
             </div>
             <div className="col-lg-6">
               <img
-                className="img-fluid rounded"
+                className="img-fluid rounded image-section"
                 src={whatisdonated}
                 alt="error"
               />
