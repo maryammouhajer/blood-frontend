@@ -1,18 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-//import blood_drop_logo from "../image/blood_drop_logo.jpg"
 import bloodrecipient from "../../image/logo.jpg"
 function RecipientCards(recipient) {
     const [recipients, SetRecipients] = useState([]);
-    // name,
-    // contactNumber,
-    // recipientEmail,
-    // address,
+    
     useEffect(() => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://localhost/blood_back/api/recipient.php",
+            "http://localhost/blood_back/api/recipient.php",recipient,
             {
               blood: "blood group", // Replace with the actual blood group value
             }
@@ -29,10 +25,11 @@ function RecipientCards(recipient) {
     return (
       <div>
         <div className="row">
-          {recipients.map((recipient) => (
+        {recipients.map((recipient, index) => (
+       
             <div
               className="col-lg-4 col-sm-6 portfolio-item"
-              key={recipient.recipientId}
+              key={index}
             >
               <br />
               <div className="card" style={{ width: "300px" }}>
@@ -45,11 +42,13 @@ function RecipientCards(recipient) {
                 <div className="card-body">
                   <h3 className="card-title">{recipient.Name}</h3>
                   <p className="card-text">
-                    {/* <b>Blood Group: </b> <b>{recipient.blood_group}</b> */}
+                    <b>Blood Group: </b> <b>{recipient.blood_group}</b>
                     <br />
-                    <b>Mobile No.: </b> {recipient.ContactNumber}
+                    <b>Recipient Email: </b> <b>{recipient.RecipientEmail}</b>
                     <br />
-                    {/* <b>Gender: </b> {recipient.recipient_gender} */}
+                    <b>Contact Number: </b> {recipient.ContactNumber}
+                    <br />
+                    <b>Gender: </b> {recipient.recipient_gender}
                     <br />
                     <b>date of Birth: </b> {recipient.dateBirth_recipient}
                     <br />

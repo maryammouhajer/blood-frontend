@@ -24,8 +24,10 @@ import Dashboard from "./Home";
 import Recipient_List from "./Recipient_List";
 import Manage_Pages from "./Manage_Pages ";
 // import Recipient_List from './Recipient_List';
-import Adddonor from "./Adddonor";
+
 import Donorlist from "./DonorList";
+import Create_Recipient from "./Create_Recipient";
+import Create_Donor from "./Create_Donor";
 
 const drawerWidth = 240;
 
@@ -62,13 +64,32 @@ const ResponsiveDrawer = (props) => {
 
         <ListItem
           disablePadding
-          onClick={() => navigate("/admin/dashboard/Adddonor")}
+          onClick={() => navigate("/admin/dashboard/Create_Donor")}
         >
           <ListItemButton>
             <ListItemIcon>
               <LeaderboardIcon />
             </ListItemIcon>
-            <ListItemText>Add Donor</ListItemText>
+            <ListItemText>Create Donor</ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding onClick={() => navigate("DonorList")}>
+          <ListItemButton>
+            <ListItemIcon>
+              <QueryStatsIcon />
+            </ListItemIcon>
+            <ListItemText>Donor List </ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          disablePadding
+          onClick={() => navigate("/admin/dashboard/Create_Recipient")}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <LeaderboardIcon />
+            </ListItemIcon>
+            <ListItemText>Add Recipient</ListItemText>
           </ListItemButton>
         </ListItem>
         <ListItem
@@ -82,17 +103,7 @@ const ResponsiveDrawer = (props) => {
             <ListItemText>Recipient List</ListItemText>
           </ListItemButton>
         </ListItem>
-        <ListItem
-          disablePadding
-          onClick={() => navigate("DonorList")}
-        >
-          <ListItemButton>
-            <ListItemIcon>
-              <QueryStatsIcon />
-            </ListItemIcon>
-            <ListItemText>Donor List </ListItemText>
-          </ListItemButton>
-        </ListItem>
+
         <ListItem
           disablePadding
           onClick={() => navigate("/admin/dashboard/Manage_Pages ")}
@@ -133,7 +144,7 @@ const ResponsiveDrawer = (props) => {
           </IconButton>
 
           <Typography variant="h6" noWrap component="div">
-           Blood Bank Management System Dashboard
+            Blood Bank Management System Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -186,7 +197,8 @@ const ResponsiveDrawer = (props) => {
         <Toolbar />
         <Routes>
           <Route exact path="/" element={<Dashboard />}></Route>
-          <Route path="Adddonor" element={<Adddonor />}></Route>
+          <Route path="Create_Donor" element={<Create_Donor />}></Route>
+          <Route path="Create_Recipient" element={<Create_Recipient />}></Route>
           <Route path="recipient_list" element={<Recipient_List />}></Route>
           <Route path="DonorList" element={<Donorlist />}></Route>
           <Route path="Manage_Pages" element={<Manage_Pages />}></Route>

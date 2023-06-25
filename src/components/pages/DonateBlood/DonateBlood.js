@@ -286,7 +286,6 @@ const DonateBlood = () => {
                 id="last_time_donor"
                 value={donor.last_time_donor}
                 onChange={handleChange}
-                required
               />
               {errors.last_time_donor && (
                 <p className="text-danger">{errors.last_time_donor}</p>

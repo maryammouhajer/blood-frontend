@@ -25,7 +25,7 @@ const ContentCard = ({ pageType }) => {
       <h4 className="card-header bg-info text-white">{pageType}</h4>
       <p
         className="card-body overflow-auto"
-        style={{ paddingLeft: "2%", height: "280px", textAlign: "left" }}
+        style={{ paddingLeft: "2%", height: "170px", textAlign: "left" }}
       >
         {pageData}
       </p>

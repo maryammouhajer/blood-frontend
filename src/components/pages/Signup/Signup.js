@@ -34,13 +34,13 @@ const Signup = () => {
           <span>Confirm password</span>
         </label>
         {/* <<!-- radio button --> */}
-        <div class="radio-group">
-          <label class="radio">
+        <div className="radio-group">
+          <label className="radio">
             <input type="radio" value="donor" name="type" />
             Donor
             <span></span>
           </label>
-          <label class="radio">
+          <label className="radio">
             <input type="radio" value="recipient" name="type" />
             Recipient
             <span></span>

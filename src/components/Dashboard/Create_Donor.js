@@ -1,29 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const Adddonor = () => {
+const Create_Donor = () => {
   const navigate = useNavigate();
-  // const [formvalue, setFormvalue] = useState({ donorname:'', email:'', status:'' });
-  // const [message, setMessage] = useState('');
-  // const handleInput = (e) => {
-  //     setFormvalue({ ...formvalue, [e.target.name]: e.target.value });
-  // }
-
-  // const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     //console.log(formvalue);
-  //     const formData = { donorname: formvalue.donorname, email: formvalue.email, status: formvalue.status };
-  //     const res = await axios.post("http://localhost/blood_back/api/donor.php", formData);
-  //     //let jsonres= res.data.json();
-  //     if (res.data.success) {
-  //         setMessage(res.data.success);
-  //         setTimeout(() => {
-  //             navigate('/donorlist');
-  //         }, 2000);
-
-  //     }
-  // }
   const [donor, setDonor] = useState({
     donor_name: "",
     donor_number: "",
@@ -87,11 +66,9 @@ const Adddonor = () => {
           if (response.status === 200) {
             // Handle successful form submission
             console.log("Form submitted successfully!");
-            
-                        
-                        setTimeout(() => {
-                            navigate('admin/dashboard/DonorList');
-                        }, 2000);
+            setTimeout(() => {
+              navigate("/admin/dashboard/DonorList");
+            }, 2000);
           } else {
             // Handle error response from the server
             console.log("An error occurred while submitting the form.");
@@ -126,11 +103,12 @@ const Adddonor = () => {
     const { name, value } = e.target;
     setDonor((prevDonor) => ({ ...prevDonor, [name]: value }));
   };
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-8 offset-md-2">
-          <h2 className="text-center text-danger mb-4">Donate Blood</h2>
+          <h2 className="text-center text-danger mb-4">Create Donor</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="donor_name">Name</label>
@@ -329,4 +307,5 @@ const Adddonor = () => {
     </div>
   );
 };
-export default Adddonor;
+
+export default Create_Donor;

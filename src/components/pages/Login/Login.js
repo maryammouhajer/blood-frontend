@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 import bl4 from "../../../image/bl4.jpg";
 
 const Login = ({ handleLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [UserPassword, setUserPassword] = useState("");
   const [userType, setUserType] = useState("donor");
   const navigate = useNavigate();
 
@@ -14,9 +14,9 @@ const Login = ({ handleLogin }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost/blood_back/api/user.php", {
-        email,
-        password,
+      const response = await axios.post("http://localhost/blood_back/api/login.php", {
+        userEmail,
+        UserPassword,
         userType,
       });
       // Handle login success
@@ -72,8 +72,8 @@ const Login = ({ handleLogin }) => {
             type="text"
             className="input_field"
             id="email_field"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
           />
         </div>
         <div className="input_container">
@@ -97,8 +97,8 @@ const Login = ({ handleLogin }) => {
             type="password"
             className="input_field"
             id="password_field"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={UserPassword}
+            onChange={(e) => setUserPassword(e.target.value)}
           />
         </div>
         <div className="radio-group">

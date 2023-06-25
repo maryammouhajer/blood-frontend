@@ -1,6 +1,4 @@
-
-/* Set the margin and position of the page container */
-#page-container {
+/* #page-container {
   margin-top: 50px;
   position: relative;
   min-height: 84vh;
@@ -71,5 +69,17 @@ h1 {
 
 /* Set the font weight of the contact details headers */
 .contact-details strong {
-  font-weight:medium;
+  font-weight: medium;
+}
+
+.btn-success {
+  background-color: #dc3545;
+
+  --bs-btn-bg: #dc3545;
+  --bs-btn-border-color: #dc3545;
+  --bs-btn-active-bg: #a52834;
+
+  --bs-btn-active-border-color: #a52834;
+  --bs-btn-hover-bg: #a52834;
+  --bs-btn-hover-border-color: #a52834;
 }

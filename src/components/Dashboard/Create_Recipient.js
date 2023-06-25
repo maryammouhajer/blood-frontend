@@ -1,9 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Recipient.css";
-
-const Recipient = () => {
+const Create_Recipient = () => {
   const navigate = useNavigate();
   const [recipient, setRecipient] = useState({
     RecipientID: "",
@@ -265,4 +263,4 @@ const Recipient = () => {
   );
 };
 
-export default Recipient;
+export default Create_Recipient;
