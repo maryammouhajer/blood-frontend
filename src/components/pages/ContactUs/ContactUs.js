@@ -66,7 +66,7 @@ const ContactUs = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-6">
-            <h1 className="mb-4 center">Contact Us</h1>
+            <h1 className="mb-4 ">Contact Us</h1>
             <p className="lead mb-4">
               Fill out the form below to send us a message.
             </p>
@@ -132,7 +132,7 @@ const ContactUs = () => {
             </form>
           </div>
           <div className="col-lg-6">
-            <h2>Contact Details</h2>
+          <h1 className="mb-4 center">Contact Details</h1>
             <div className="contact-details">
               <div>
                 <strong>Address:</strong> {contactDetails.address}

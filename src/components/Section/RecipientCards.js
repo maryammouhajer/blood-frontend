@@ -32,7 +32,7 @@ function RecipientCards(recipient) {
               key={index}
             >
               <br />
-              <div className="card" style={{ width: "300px" }}>
+              <div className="card" >
                 <img
                   className="card-img-top"
                  src={bloodrecipient}

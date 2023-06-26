@@ -37,7 +37,7 @@ function Donorlist() {
       <div className="container">
         <div className="row">
           <div className="col-md-10 mt-4">
-            <h5 className="mb-4">Donor List</h5>
+          <h2 className="text-center text-danger mb-4">Donor List</h2>
             <p className="text-danger">{message}</p>
             <table className="table table-bordered">
               <thead>

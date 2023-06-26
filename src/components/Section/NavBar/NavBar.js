@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./NavBar.css";
 const NavBar = () => {
   return (
@@ -8,8 +9,10 @@ const NavBar = () => {
         <div className="row">
           <nav className="navbar navbar-expand-lg ">
             <div className="container">
-              <Link className="navbar-brand" to="/">
-                Blood Bank Management System
+              <Link className="navbar-brand " to="/">
+                
+                LIFE BLOOD<br/>
+                 {/* Blood Bank Management System  */}
               </Link>
               <button
                 className="navbar-toggler"
@@ -28,7 +31,7 @@ const NavBar = () => {
               >
                 <ul className="navbar-nav  me-auto mb-2 mb-lg-0">
                   <li className="act">
-                    <Link to="AboutUs">About Us</Link>
+                    <Link  to="AboutUs">About Us</Link>
                   </li>
                   <li>
                     <Link to="WhyDonateBlood">Why Donate Blood</Link>
@@ -52,8 +55,6 @@ const NavBar = () => {
                     <Link to="/login">Login</Link>
                   </li>
                 </ul>
-
-                
               </div>
             </div>
           </nav>

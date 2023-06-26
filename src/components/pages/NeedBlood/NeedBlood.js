@@ -42,71 +42,73 @@ function NeedBlood() {
   };
 
   return (
-    <div className="container">
-      <h2>Search Blood Donors</h2>
-      <div className="search-container">
-        <select value={bloodGroup} onChange={handleBloodGroupChange} required>
-          <option value="" disabled>
-            Select Blood Group
-          </option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
-        <button className="search-btn" onClick={handleSearch}>
-          Search
-        </button>
-      </div>
+    <div className="search-section">
+      <div className="container">
+        <h2>Search Blood Donors</h2>
+        <div className="search-container">
+          <select value={bloodGroup} onChange={handleBloodGroupChange} required>
+            <option value="" disabled>
+              Select Blood Group
+            </option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
+          <button className="search-btn" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
 
-      {errorMsg && <p className="error-msg">{errorMsg}</p>}
+        {errorMsg && <p className="error-msg">{errorMsg}</p>}
 
-      {searched && donors.length > 0 ? (
-        <div className="mt-100">
-          <h3>Donors with Blood Group {bloodGroup}</h3>
-          <div className="card-container">
-            {donors.map((donor, index) => (
-              <div key={index} className="card" style={{ width: "300px" }}>
-                <img
-                  className="card-img-top"
-                  src={blood_drop_logo}
-                  alt="Card image"
-                  style={{ width: "100%", height: "300px" }}
-                />
-                <div className="card-body">
-                  <h3 className="card-title">{donor.donor_name}</h3>
-                  <p className="card-text">
-                    <b>Blood Group: </b> <b>{donor.blood_group}</b>
-                    <br />
-                    <b>Mobile No.: </b> {donor.donor_number}
-                    <br />
-                    <b>Gender: </b> {donor.donor_gender}
-                    <br />
-                    <b>date of Birth: </b> {donor.dateBirth_donor}
-                    <br />
-                    <b>Address: </b> {donor.donor_address}
-                    <br />
-                  </p>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => handleRequestBlood(donor)}
-                  >
-                    Request Blood
-                  </button>
+        {searched && donors.length > 0 ? (
+          <div className="mt-10">
+            <h3>Donors with Blood Group {bloodGroup}</h3>
+            <div className="card-container">
+              {donors.map((donor, index) => (
+                <div key={index} className="card" style={{ width: "300px" }}>
+                  <img
+                    className="card-img-top"
+                    src={blood_drop_logo}
+                    alt="Card image"
+                    style={{ width: "100%", height: "300px" }}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">{donor.donor_name}</h3>
+                    <p className="card-text">
+                      <b>Blood Group: </b> <b>{donor.blood_group}</b>
+                      <br />
+                      <b>Mobile No.: </b> {donor.donor_number}
+                      <br />
+                      <b>Gender: </b> {donor.donor_gender}
+                      <br />
+                      <b>date of Birth: </b> {donor.dateBirth_donor}
+                      <br />
+                      <b>Address: </b> {donor.donor_address}
+                      <br />
+                    </p>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleRequestBlood(donor)}
+                    >
+                      Request Blood
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ) : searched ? (
-        <div className="alert alert-danger">
-          No Donor Found For your search Blood group {bloodGroup}
-        </div>
-      ) : null}
+        ) : searched ? (
+          <div className="alert alert-danger">
+            No Donor Found For your search Blood group {bloodGroup}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

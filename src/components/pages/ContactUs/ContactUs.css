@@ -1,8 +1,3 @@
-/* #page-container {
-  margin-top: 50px;
-  position: relative;
-  min-height: 84vh;
-}
 
 /* Set the padding of the content wrap */
 #content-wrap {
@@ -13,7 +8,6 @@
 h1 {
   font-size: 3rem;
   color: #e2091f;
-  text-align: center;
   margin-top: 2rem;
   margin-bottom: 3rem;
 }

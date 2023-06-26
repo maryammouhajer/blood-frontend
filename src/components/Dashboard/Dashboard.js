@@ -19,25 +19,18 @@ import Typography from "@mui/material/Typography";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import SellIcon from "@mui/icons-material/Sell";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-//import Leaderboard from "./Leaderboard";
 import Dashboard from "./Home";
 import Recipient_List from "./Recipient_List";
-import Manage_Pages from "./Manage_Pages ";
-// import Recipient_List from './Recipient_List';
+import Manage_Pages from "./Manage_Pages";
 
 import Donorlist from "./DonorList";
 import Create_Recipient from "./Create_Recipient";
 import Create_Donor from "./Create_Donor";
+import Contact_Query from "./Contact_Query";
 
 const drawerWidth = 240;
 
-// interface Props {
-//   /**
-//    * Injected by the documentation to work in an iframe.
-//    * You won't need it on your project.
-//    */
-//   window?: () => Window;
-// }
+
 
 const ResponsiveDrawer = (props) => {
   const { window } = props;
@@ -68,7 +61,7 @@ const ResponsiveDrawer = (props) => {
         >
           <ListItemButton>
             <ListItemIcon>
-              <LeaderboardIcon />
+            <SellIcon />
             </ListItemIcon>
             <ListItemText>Create Donor</ListItemText>
           </ListItemButton>
@@ -76,7 +69,7 @@ const ResponsiveDrawer = (props) => {
         <ListItem disablePadding onClick={() => navigate("DonorList")}>
           <ListItemButton>
             <ListItemIcon>
-              <QueryStatsIcon />
+            <Group />
             </ListItemIcon>
             <ListItemText>Donor List </ListItemText>
           </ListItemButton>
@@ -87,7 +80,7 @@ const ResponsiveDrawer = (props) => {
         >
           <ListItemButton>
             <ListItemIcon>
-              <LeaderboardIcon />
+            <SellIcon />
             </ListItemIcon>
             <ListItemText>Add Recipient</ListItemText>
           </ListItemButton>
@@ -98,7 +91,7 @@ const ResponsiveDrawer = (props) => {
         >
           <ListItemButton>
             <ListItemIcon>
-              <SellIcon />
+            <Group />
             </ListItemIcon>
             <ListItemText>Recipient List</ListItemText>
           </ListItemButton>
@@ -113,6 +106,25 @@ const ResponsiveDrawer = (props) => {
               <Group />
             </ListItemIcon>
             <ListItemText>Manage Pages </ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          disablePadding
+          onClick={() => navigate("/admin/dashboard/Contact_Query ")}
+        >
+          <ListItemButton>
+            <ListItemIcon>
+              <Group />
+            </ListItemIcon>
+            <ListItemText> Check Contact Query</ListItemText>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding onClick={() => navigate("/")}>
+          <ListItemButton>
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText>Go To Home Page</ListItemText>
           </ListItemButton>
         </ListItem>
       </List>
@@ -132,7 +144,7 @@ const ResponsiveDrawer = (props) => {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar style={{ backgroundColor: "red" }}>
+        <Toolbar style={{ backgroundColor: "#de1f26" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -202,6 +214,7 @@ const ResponsiveDrawer = (props) => {
           <Route path="recipient_list" element={<Recipient_List />}></Route>
           <Route path="DonorList" element={<Donorlist />}></Route>
           <Route path="Manage_Pages" element={<Manage_Pages />}></Route>
+          <Route path="Contact_Query" element={<Contact_Query />}></Route>
         </Routes>
       </Box>
     </Box>

@@ -92,7 +92,7 @@ const Recipient = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-8 offset-md-2">
-          {/* <h2 className="text-center text-danger mb-4">Donate Blood</h2> */}
+          <h2 className="text-center text-danger mb-4">Add Recipient </h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="Name">Name</label>
